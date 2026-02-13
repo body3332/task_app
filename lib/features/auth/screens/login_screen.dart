@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_app/main_wrapper.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../widgets/auth_text_field.dart';
 import 'signup_screen.dart';
@@ -55,10 +56,16 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              CustomButton(
-                text: "Log In",
-                onPressed: () {},
-              ),
+CustomButton(
+  text: "Log In",
+  onPressed: () {
+    // الكود ده بيشيل صفحة اللوجن خالص ويحط مكانها الهوم
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const MainWrapper()), // MainWrapper هو الملف اللي فيه الـ Bottom Navigation
+    );
+  },
+),
               const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

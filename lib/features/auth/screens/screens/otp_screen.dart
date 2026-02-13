@@ -13,7 +13,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
   int _start = 30;
   bool _canResend = false;
 
-  // تعريف 4 كنترولر لـ 4 خانات
   List<TextEditingController> controllers =
       List.generate(4, (index) => TextEditingController());
   List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
@@ -53,7 +52,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
     super.dispose();
   }
 
-  // ودجت الخانة الواحدة
   Widget _otpBox(int index) {
     return SizedBox(
       width: 55,
@@ -75,11 +73,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
         ),
         onChanged: (value) {
           if (value.isNotEmpty && index < 3) {
-            focusNodes[index + 1]
-                .requestFocus(); // الانتقال للخانة التالية تلقائياً
+            focusNodes[index + 1].requestFocus();
           } else if (value.isEmpty && index > 0) {
-            focusNodes[index - 1]
-                .requestFocus(); // العودة للخانة السابقة عند المسح
+            focusNodes[index - 1].requestFocus();
           }
         },
       ),
@@ -105,13 +101,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
               const Text("Verification",
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
               const SizedBox(height: 40),
-
-              // عرض الخانات قريبة من بعضها
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: List.generate(4, (index) => _otpBox(index)),
               ),
-
               const SizedBox(height: 30),
               _canResend
                   ? TextButton(
@@ -120,10 +113,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                           style: TextStyle(color: Color(0xFF53B175))))
                   : Text("Resend in 00:$_start",
                       style: const TextStyle(color: Colors.grey)),
-
               const Spacer(),
-
-              // زر التأكيد
               SizedBox(
                 width: double.infinity,
                 height: 60,

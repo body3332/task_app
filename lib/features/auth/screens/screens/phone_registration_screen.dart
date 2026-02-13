@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:task_app/core/widgets/custom_button.dart';
-import 'otp_screen.dart'; // شاشة الـ OTP اللي هنروح لها
+import 'otp_screen.dart';
 
 class PhoneRegistrationScreen extends StatefulWidget {
   const PhoneRegistrationScreen({super.key});
 
   @override
-  State<PhoneRegistrationScreen> createState() => _PhoneRegistrationScreenState();
+  State<PhoneRegistrationScreen> createState() =>
+      _PhoneRegistrationScreenState();
 }
 
 class _PhoneRegistrationScreenState extends State<PhoneRegistrationScreen> {
@@ -32,38 +33,30 @@ class _PhoneRegistrationScreenState extends State<PhoneRegistrationScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              
-              // العنوان الرئيسي
               const Text(
                 "Enter your mobile number",
                 style: TextStyle(
-                  fontSize: 24, 
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
-              
               const SizedBox(height: 15),
-              
-              // الوصف
               const Text(
                 "We need to verify you. We will send you a one time verification code.",
                 style: TextStyle(
-                  color: Colors.grey, 
+                  color: Colors.grey,
                   fontSize: 15,
                   height: 1.5,
                 ),
               ),
-              
               const SizedBox(height: 40),
-
-              // حقل إدخال رقم الهاتف مع العلم (زي الصورة)
               IntlPhoneField(
                 controller: phoneController,
                 decoration: InputDecoration(
                   hintText: '01xxxxxxxxx',
                   filled: true,
-                  fillColor: const Color(0xFFF2F3F2), // لون رمادي فاتح جداً
+                  fillColor: const Color(0xFFF2F3F2),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide.none,
@@ -73,19 +66,14 @@ class _PhoneRegistrationScreenState extends State<PhoneRegistrationScreen> {
                     borderSide: const BorderSide(color: Color(0xFF53B175)),
                   ),
                 ),
-                initialCountryCode: 'EG', // كود مصر افتراضياً
-                onChanged: (phone) {
-                },
+                initialCountryCode: 'EG',
+                onChanged: (phone) {},
                 languageCode: "en",
               ),
-
               const SizedBox(height: 40),
-
-              // زر الانتقال
               CustomButton(
                 text: "Next",
                 onPressed: () {
-                  // الانتقال لصفحة الـ OTP
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -94,10 +82,7 @@ class _PhoneRegistrationScreenState extends State<PhoneRegistrationScreen> {
                   );
                 },
               ),
-              
               const SizedBox(height: 25),
-              
-              // نص إعادة الإرسال (ملاحظة: خليناه نص ثابت هنا لأن التايمر هيكون في الـ OTP)
               const Center(
                 child: Text(
                   "Resend confirmation code (1:23)",
